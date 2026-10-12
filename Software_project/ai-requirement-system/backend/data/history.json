@@ -1,0 +1,1825 @@
+[
+  {
+    "id": "req_4fa8b963-2",
+    "title": "Patients must log in using two-factor authentication...",
+    "text": "1. Patients must log in using two-factor authentication before viewing electronic health records.\n2. The system must comply strictly with HIPAA privacy regulations for all stored patient diagnosis notes.\n3. Doctors should be able to e-prescribe medication and transmit orders directly to certified pharmacies.\n4. Laboratory test results must be securely encrypted both in transit (TLS 1.3) and at rest.\n5. The appointment booking module can send optional SMS appointment reminders 24 hours prior to scheduled visits.\n6. The audit log must record all patient record accesses with timestamp, user ID, and IP address.\n7. The patient dashboard should display health metrics in a seamless and modern layout.\n8. System backups must be executed every 6 hours and replicated to a geographically distinct secondary data center.",
+    "analysis": {
+      "classificationBreakdown": {
+        "business": 1,
+        "functional": 3,
+        "nonFunctional": 4,
+        "technical": 0
+      },
+      "data": [
+        {
+          "acceptanceCriteria": [
+            {
+              "given": "the system is online and Patients has valid permissions",
+              "scenario": "Happy Path Execution",
+              "then": "the system processes the request successfully within standard response thresholds and confirms state update",
+              "when": "Patients triggers log with valid input parameters"
+            },
+            {
+              "given": "the system is accepting requests from Patients",
+              "scenario": "Input Validation & Error Handling",
+              "then": "the system rejects the operation, returns a descriptive error message, and logs an audit event without data leakage",
+              "when": "invalid, malformed, or unauthorized data is submitted"
+            }
+          ],
+          "actors": [
+            "Patients"
+          ],
+          "businessImpact": "High: Essential for core system operation, legal/compliance mandates, or system security.",
+          "category": "Security",
+          "classification": "Non-Functional",
+          "dependencies": [
+            "authentication",
+            "records"
+          ],
+          "id": "REQ-001",
+          "priority": "High",
+          "reason": "Mandatory constraint specified using binding modal keywords (must/shall/critical).",
+          "requirement": "Patients must log in using two-factor authentication before viewing electronic health records.",
+          "risks": [
+            {
+              "description": "This security requirement lacks quantifiable targets (e.g., latency, cipher standard, timeout limit).",
+              "id": "RSK-001",
+              "reqId": "REQ-001",
+              "requirement": "Patients must log in using two-factor authentication before viewing electronic health records.",
+              "severity": "High",
+              "suggestion": "Include specific numerical thresholds, standard specifications (e.g. AES-256, TLS 1.3), or target response latencies.",
+              "term": "no metrics",
+              "type": "Missing Quantitative Threshold",
+              "whyItMatters": "Cannot be automated in CI/CD performance testing or verified against compliance audits."
+            }
+          ]
+        },
+        {
+          "acceptanceCriteria": [
+            {
+              "given": "the system is online and system has valid permissions",
+              "scenario": "Happy Path Execution",
+              "then": "the system processes the request successfully within standard response thresholds and confirms state update",
+              "when": "system triggers comply with valid input parameters"
+            },
+            {
+              "given": "the system is accepting requests from system",
+              "scenario": "Input Validation & Error Handling",
+              "then": "the system rejects the operation, returns a descriptive error message, and logs an audit event without data leakage",
+              "when": "invalid, malformed, or unauthorized data is submitted"
+            }
+          ],
+          "actors": [
+            "system",
+            "HIPAA"
+          ],
+          "businessImpact": "High: Essential for core system operation, legal/compliance mandates, or system security.",
+          "category": "Security",
+          "classification": "Non-Functional",
+          "dependencies": [
+            "regulations",
+            "notes"
+          ],
+          "id": "REQ-002",
+          "priority": "High",
+          "reason": "Mandatory constraint specified using binding modal keywords (must/shall/critical).",
+          "requirement": "The system must comply strictly with HIPAA privacy regulations for all stored patient diagnosis notes.",
+          "risks": [
+            {
+              "description": "This security requirement lacks quantifiable targets (e.g., latency, cipher standard, timeout limit).",
+              "id": "RSK-002",
+              "reqId": "REQ-002",
+              "requirement": "The system must comply strictly with HIPAA privacy regulations for all stored patient diagnosis notes.",
+              "severity": "High",
+              "suggestion": "Include specific numerical thresholds, standard specifications (e.g. AES-256, TLS 1.3), or target response latencies.",
+              "term": "no metrics",
+              "type": "Missing Quantitative Threshold",
+              "whyItMatters": "Cannot be automated in CI/CD performance testing or verified against compliance audits."
+            }
+          ]
+        },
+        {
+          "acceptanceCriteria": [
+            {
+              "given": "the system is online and Doctors has valid permissions",
+              "scenario": "Happy Path Execution",
+              "then": "the system processes the request successfully within standard response thresholds and confirms state update",
+              "when": "Doctors triggers e with valid input parameters"
+            },
+            {
+              "given": "the system is accepting requests from Doctors",
+              "scenario": "Input Validation & Error Handling",
+              "then": "the system rejects the operation, returns a descriptive error message, and logs an audit event without data leakage",
+              "when": "invalid, malformed, or unauthorized data is submitted"
+            }
+          ],
+          "actors": [
+            "Doctors"
+          ],
+          "businessImpact": "Medium: Directly impacts user satisfaction, processing speed, or workflow efficiency.",
+          "category": "General",
+          "classification": "Functional",
+          "dependencies": [
+            "medication",
+            "orders",
+            "pharmacies"
+          ],
+          "id": "REQ-003",
+          "priority": "Medium",
+          "reason": "Important operational or user experience capability (should/recommended) but not an absolute blocker for initial release.",
+          "requirement": "Doctors should be able to e-prescribe medication and transmit orders directly to certified pharmacies.",
+          "risks": []
+        },
+        {
+          "acceptanceCriteria": [
+            {
+              "given": "the system is online and results has valid permissions",
+              "scenario": "Happy Path Execution",
+              "then": "the system processes the request successfully within standard response thresholds and confirms state update",
+              "when": "results triggers encrypt with valid input parameters"
+            },
+            {
+              "given": "the system is accepting requests from results",
+              "scenario": "Input Validation & Error Handling",
+              "then": "the system rejects the operation, returns a descriptive error message, and logs an audit event without data leakage",
+              "when": "invalid, malformed, or unauthorized data is submitted"
+            }
+          ],
+          "actors": [
+            "results"
+          ],
+          "businessImpact": "High: Essential for core system operation, legal/compliance mandates, or system security.",
+          "category": "Security",
+          "classification": "Non-Functional",
+          "dependencies": [
+            "transit",
+            "rest"
+          ],
+          "id": "REQ-004",
+          "priority": "High",
+          "reason": "Mandatory constraint specified using binding modal keywords (must/shall/critical).",
+          "requirement": "Laboratory test results must be securely encrypted both in transit (TLS 1.3) and at rest.",
+          "risks": [
+            {
+              "description": "Sentence is constructed in passive voice without a clearly identified triggering actor.",
+              "id": "RSK-003",
+              "reqId": "REQ-004",
+              "requirement": "Laboratory test results must be securely encrypted both in transit (TLS 1.3) and at rest.",
+              "severity": "Moderate",
+              "suggestion": "Restructure in active voice: 'The [Actor/System] shall encrypt ...'",
+              "term": "passive voice",
+              "type": "Missing Actor (Passive Voice)",
+              "whyItMatters": "Obscures responsibility. Developers and QA cannot definitively tell which system service or user role initiates this action."
+            }
+          ]
+        },
+        {
+          "acceptanceCriteria": [
+            {
+              "given": "the system is online and module has valid permissions",
+              "scenario": "Happy Path Execution",
+              "then": "the system processes the request successfully within standard response thresholds and confirms state update",
+              "when": "module triggers send with valid input parameters"
+            },
+            {
+              "given": "the system is accepting requests from module",
+              "scenario": "Input Validation & Error Handling",
+              "then": "the system rejects the operation, returns a descriptive error message, and logs an audit event without data leakage",
+              "when": "invalid, malformed, or unauthorized data is submitted"
+            }
+          ],
+          "actors": [
+            "module",
+            "SMS"
+          ],
+          "businessImpact": "Low: Cosmetic, supplementary convenience, or future-phase backlog item.",
+          "category": "Functional Core",
+          "classification": "Functional",
+          "dependencies": [
+            "reminders",
+            "visits"
+          ],
+          "id": "REQ-005",
+          "priority": "Low",
+          "reason": "Discretionary or optional capability (may/can/optional) suitable for post-launch enhancement.",
+          "requirement": "The appointment booking module can send optional SMS appointment reminders 24 hours prior to scheduled visits.",
+          "risks": []
+        },
+        {
+          "acceptanceCriteria": [
+            {
+              "given": "the system is online and log has valid permissions",
+              "scenario": "Happy Path Execution",
+              "then": "the system processes the request successfully within standard response thresholds and confirms state update",
+              "when": "log triggers record with valid input parameters"
+            },
+            {
+              "given": "the system is accepting requests from log",
+              "scenario": "Input Validation & Error Handling",
+              "then": "the system rejects the operation, returns a descriptive error message, and logs an audit event without data leakage",
+              "when": "invalid, malformed, or unauthorized data is submitted"
+            }
+          ],
+          "actors": [
+            "log",
+            "IP"
+          ],
+          "businessImpact": "High: Essential for core system operation, legal/compliance mandates, or system security.",
+          "category": "Business & Compliance",
+          "classification": "Business",
+          "dependencies": [
+            "record",
+            "timestamp"
+          ],
+          "id": "REQ-006",
+          "priority": "High",
+          "reason": "Mandatory constraint specified using binding modal keywords (must/shall/critical).",
+          "requirement": "The audit log must record all patient record accesses with timestamp, user ID, and IP address.",
+          "risks": []
+        },
+        {
+          "acceptanceCriteria": [
+            {
+              "given": "the system is online and dashboard has valid permissions",
+              "scenario": "Happy Path Execution",
+              "then": "the system processes the request successfully within standard response thresholds and confirms state update",
+              "when": "dashboard triggers display with valid input parameters"
+            },
+            {
+              "given": "the system is accepting requests from dashboard",
+              "scenario": "Input Validation & Error Handling",
+              "then": "the system rejects the operation, returns a descriptive error message, and logs an audit event without data leakage",
+              "when": "invalid, malformed, or unauthorized data is submitted"
+            }
+          ],
+          "actors": [
+            "dashboard"
+          ],
+          "businessImpact": "Medium: Directly impacts user satisfaction, processing speed, or workflow efficiency.",
+          "category": "Usability",
+          "classification": "Non-Functional",
+          "dependencies": [
+            "metrics",
+            "layout"
+          ],
+          "id": "REQ-007",
+          "priority": "Medium",
+          "reason": "Important operational or user experience capability (should/recommended) but not an absolute blocker for initial release.",
+          "requirement": "The patient dashboard should display health metrics in a seamless and modern layout.",
+          "risks": [
+            {
+              "description": "Contains subjective/vague term 'seamless' without clear measurable criteria.",
+              "id": "RSK-004",
+              "reqId": "REQ-007",
+              "requirement": "The patient dashboard should display health metrics in a seamless and modern layout.",
+              "severity": "Moderate",
+              "suggestion": "Replace 'seamless' with a quantifiable metric or concrete acceptance test.",
+              "term": "seamless",
+              "type": "Ambiguity",
+              "whyItMatters": "Vague integration claim. Define zero-downtime, SSO, or automated sync constraints."
+            }
+          ]
+        },
+        {
+          "acceptanceCriteria": [
+            {
+              "given": "the system is online and backups has valid permissions",
+              "scenario": "Happy Path Execution",
+              "then": "the system processes the request successfully within standard response thresholds and confirms state update",
+              "when": "backups triggers execute with valid input parameters"
+            },
+            {
+              "given": "the system is accepting requests from backups",
+              "scenario": "Input Validation & Error Handling",
+              "then": "the system rejects the operation, returns a descriptive error message, and logs an audit event without data leakage",
+              "when": "invalid, malformed, or unauthorized data is submitted"
+            }
+          ],
+          "actors": [
+            "backups"
+          ],
+          "businessImpact": "High: Essential for core system operation, legal/compliance mandates, or system security.",
+          "category": "General",
+          "classification": "Functional",
+          "dependencies": [
+            "center"
+          ],
+          "id": "REQ-008",
+          "priority": "High",
+          "reason": "Mandatory constraint specified using binding modal keywords (must/shall/critical).",
+          "requirement": "System backups must be executed every 6 hours and replicated to a geographically distinct secondary data center.",
+          "risks": [
+            {
+              "description": "Sentence is constructed in passive voice without a clearly identified triggering actor.",
+              "id": "RSK-005",
+              "reqId": "REQ-008",
+              "requirement": "System backups must be executed every 6 hours and replicated to a geographically distinct secondary data center.",
+              "severity": "Moderate",
+              "suggestion": "Restructure in active voice: 'The [Actor/System] shall execute ...'",
+              "term": "passive voice",
+              "type": "Missing Actor (Passive Voice)",
+              "whyItMatters": "Obscures responsibility. Developers and QA cannot definitively tell which system service or user role initiates this action."
+            }
+          ]
+        }
+      ],
+      "recommendations": [
+        {
+          "description": "Replace subjective adjectives like 'fast' and 'user-friendly' with concrete, measurable KPIs and SLA benchmarks.",
+          "priority": "High",
+          "title": "Quantify 1 Ambiguous Term(s)"
+        },
+        {
+          "description": "Convert passive voice statements into explicit subject-verb requirements specifying exact user roles or system microservices.",
+          "priority": "Medium",
+          "title": "Assign Explicit Actors to 2 Requirement(s)"
+        },
+        {
+          "description": "Specify expected concurrent user loads, API response times (e.g. p95 < 300ms), and database query latency bounds.",
+          "priority": "Medium",
+          "title": "Establish Performance and Scalability Budgets"
+        },
+        {
+          "description": "Review the auto-generated Given-When-Then scenarios with QA and product stakeholders to prepare automated test cases.",
+          "priority": "Low",
+          "title": "Formalize Acceptance Criteria in BDD Format"
+        }
+      ],
+      "requirements": [
+        {
+          "acceptanceCriteria": [
+            {
+              "given": "the system is online and Patients has valid permissions",
+              "scenario": "Happy Path Execution",
+              "then": "the system processes the request successfully within standard response thresholds and confirms state update",
+              "when": "Patients triggers log with valid input parameters"
+            },
+            {
+              "given": "the system is accepting requests from Patients",
+              "scenario": "Input Validation & Error Handling",
+              "then": "the system rejects the operation, returns a descriptive error message, and logs an audit event without data leakage",
+              "when": "invalid, malformed, or unauthorized data is submitted"
+            }
+          ],
+          "actors": [
+            "Patients"
+          ],
+          "businessImpact": "High: Essential for core system operation, legal/compliance mandates, or system security.",
+          "category": "Security",
+          "classification": "Non-Functional",
+          "dependencies": [
+            "authentication",
+            "records"
+          ],
+          "id": "REQ-001",
+          "priority": "High",
+          "reason": "Mandatory constraint specified using binding modal keywords (must/shall/critical).",
+          "requirement": "Patients must log in using two-factor authentication before viewing electronic health records.",
+          "risks": [
+            {
+              "description": "This security requirement lacks quantifiable targets (e.g., latency, cipher standard, timeout limit).",
+              "id": "RSK-001",
+              "reqId": "REQ-001",
+              "requirement": "Patients must log in using two-factor authentication before viewing electronic health records.",
+              "severity": "High",
+              "suggestion": "Include specific numerical thresholds, standard specifications (e.g. AES-256, TLS 1.3), or target response latencies.",
+              "term": "no metrics",
+              "type": "Missing Quantitative Threshold",
+              "whyItMatters": "Cannot be automated in CI/CD performance testing or verified against compliance audits."
+            }
+          ]
+        },
+        {
+          "acceptanceCriteria": [
+            {
+              "given": "the system is online and system has valid permissions",
+              "scenario": "Happy Path Execution",
+              "then": "the system processes the request successfully within standard response thresholds and confirms state update",
+              "when": "system triggers comply with valid input parameters"
+            },
+            {
+              "given": "the system is accepting requests from system",
+              "scenario": "Input Validation & Error Handling",
+              "then": "the system rejects the operation, returns a descriptive error message, and logs an audit event without data leakage",
+              "when": "invalid, malformed, or unauthorized data is submitted"
+            }
+          ],
+          "actors": [
+            "system",
+            "HIPAA"
+          ],
+          "businessImpact": "High: Essential for core system operation, legal/compliance mandates, or system security.",
+          "category": "Security",
+          "classification": "Non-Functional",
+          "dependencies": [
+            "regulations",
+            "notes"
+          ],
+          "id": "REQ-002",
+          "priority": "High",
+          "reason": "Mandatory constraint specified using binding modal keywords (must/shall/critical).",
+          "requirement": "The system must comply strictly with HIPAA privacy regulations for all stored patient diagnosis notes.",
+          "risks": [
+            {
+              "description": "This security requirement lacks quantifiable targets (e.g., latency, cipher standard, timeout limit).",
+              "id": "RSK-002",
+              "reqId": "REQ-002",
+              "requirement": "The system must comply strictly with HIPAA privacy regulations for all stored patient diagnosis notes.",
+              "severity": "High",
+              "suggestion": "Include specific numerical thresholds, standard specifications (e.g. AES-256, TLS 1.3), or target response latencies.",
+              "term": "no metrics",
+              "type": "Missing Quantitative Threshold",
+              "whyItMatters": "Cannot be automated in CI/CD performance testing or verified against compliance audits."
+            }
+          ]
+        },
+        {
+          "acceptanceCriteria": [
+            {
+              "given": "the system is online and Doctors has valid permissions",
+              "scenario": "Happy Path Execution",
+              "then": "the system processes the request successfully within standard response thresholds and confirms state update",
+              "when": "Doctors triggers e with valid input parameters"
+            },
+            {
+              "given": "the system is accepting requests from Doctors",
+              "scenario": "Input Validation & Error Handling",
+              "then": "the system rejects the operation, returns a descriptive error message, and logs an audit event without data leakage",
+              "when": "invalid, malformed, or unauthorized data is submitted"
+            }
+          ],
+          "actors": [
+            "Doctors"
+          ],
+          "businessImpact": "Medium: Directly impacts user satisfaction, processing speed, or workflow efficiency.",
+          "category": "General",
+          "classification": "Functional",
+          "dependencies": [
+            "medication",
+            "orders",
+            "pharmacies"
+          ],
+          "id": "REQ-003",
+          "priority": "Medium",
+          "reason": "Important operational or user experience capability (should/recommended) but not an absolute blocker for initial release.",
+          "requirement": "Doctors should be able to e-prescribe medication and transmit orders directly to certified pharmacies.",
+          "risks": []
+        },
+        {
+          "acceptanceCriteria": [
+            {
+              "given": "the system is online and results has valid permissions",
+              "scenario": "Happy Path Execution",
+              "then": "the system processes the request successfully within standard response thresholds and confirms state update",
+              "when": "results triggers encrypt with valid input parameters"
+            },
+            {
+              "given": "the system is accepting requests from results",
+              "scenario": "Input Validation & Error Handling",
+              "then": "the system rejects the operation, returns a descriptive error message, and logs an audit event without data leakage",
+              "when": "invalid, malformed, or unauthorized data is submitted"
+            }
+          ],
+          "actors": [
+            "results"
+          ],
+          "businessImpact": "High: Essential for core system operation, legal/compliance mandates, or system security.",
+          "category": "Security",
+          "classification": "Non-Functional",
+          "dependencies": [
+            "transit",
+            "rest"
+          ],
+          "id": "REQ-004",
+          "priority": "High",
+          "reason": "Mandatory constraint specified using binding modal keywords (must/shall/critical).",
+          "requirement": "Laboratory test results must be securely encrypted both in transit (TLS 1.3) and at rest.",
+          "risks": [
+            {
+              "description": "Sentence is constructed in passive voice without a clearly identified triggering actor.",
+              "id": "RSK-003",
+              "reqId": "REQ-004",
+              "requirement": "Laboratory test results must be securely encrypted both in transit (TLS 1.3) and at rest.",
+              "severity": "Moderate",
+              "suggestion": "Restructure in active voice: 'The [Actor/System] shall encrypt ...'",
+              "term": "passive voice",
+              "type": "Missing Actor (Passive Voice)",
+              "whyItMatters": "Obscures responsibility. Developers and QA cannot definitively tell which system service or user role initiates this action."
+            }
+          ]
+        },
+        {
+          "acceptanceCriteria": [
+            {
+              "given": "the system is online and module has valid permissions",
+              "scenario": "Happy Path Execution",
+              "then": "the system processes the request successfully within standard response thresholds and confirms state update",
+              "when": "module triggers send with valid input parameters"
+            },
+            {
+              "given": "the system is accepting requests from module",
+              "scenario": "Input Validation & Error Handling",
+              "then": "the system rejects the operation, returns a descriptive error message, and logs an audit event without data leakage",
+              "when": "invalid, malformed, or unauthorized data is submitted"
+            }
+          ],
+          "actors": [
+            "module",
+            "SMS"
+          ],
+          "businessImpact": "Low: Cosmetic, supplementary convenience, or future-phase backlog item.",
+          "category": "Functional Core",
+          "classification": "Functional",
+          "dependencies": [
+            "reminders",
+            "visits"
+          ],
+          "id": "REQ-005",
+          "priority": "Low",
+          "reason": "Discretionary or optional capability (may/can/optional) suitable for post-launch enhancement.",
+          "requirement": "The appointment booking module can send optional SMS appointment reminders 24 hours prior to scheduled visits.",
+          "risks": []
+        },
+        {
+          "acceptanceCriteria": [
+            {
+              "given": "the system is online and log has valid permissions",
+              "scenario": "Happy Path Execution",
+              "then": "the system processes the request successfully within standard response thresholds and confirms state update",
+              "when": "log triggers record with valid input parameters"
+            },
+            {
+              "given": "the system is accepting requests from log",
+              "scenario": "Input Validation & Error Handling",
+              "then": "the system rejects the operation, returns a descriptive error message, and logs an audit event without data leakage",
+              "when": "invalid, malformed, or unauthorized data is submitted"
+            }
+          ],
+          "actors": [
+            "log",
+            "IP"
+          ],
+          "businessImpact": "High: Essential for core system operation, legal/compliance mandates, or system security.",
+          "category": "Business & Compliance",
+          "classification": "Business",
+          "dependencies": [
+            "record",
+            "timestamp"
+          ],
+          "id": "REQ-006",
+          "priority": "High",
+          "reason": "Mandatory constraint specified using binding modal keywords (must/shall/critical).",
+          "requirement": "The audit log must record all patient record accesses with timestamp, user ID, and IP address.",
+          "risks": []
+        },
+        {
+          "acceptanceCriteria": [
+            {
+              "given": "the system is online and dashboard has valid permissions",
+              "scenario": "Happy Path Execution",
+              "then": "the system processes the request successfully within standard response thresholds and confirms state update",
+              "when": "dashboard triggers display with valid input parameters"
+            },
+            {
+              "given": "the system is accepting requests from dashboard",
+              "scenario": "Input Validation & Error Handling",
+              "then": "the system rejects the operation, returns a descriptive error message, and logs an audit event without data leakage",
+              "when": "invalid, malformed, or unauthorized data is submitted"
+            }
+          ],
+          "actors": [
+            "dashboard"
+          ],
+          "businessImpact": "Medium: Directly impacts user satisfaction, processing speed, or workflow efficiency.",
+          "category": "Usability",
+          "classification": "Non-Functional",
+          "dependencies": [
+            "metrics",
+            "layout"
+          ],
+          "id": "REQ-007",
+          "priority": "Medium",
+          "reason": "Important operational or user experience capability (should/recommended) but not an absolute blocker for initial release.",
+          "requirement": "The patient dashboard should display health metrics in a seamless and modern layout.",
+          "risks": [
+            {
+              "description": "Contains subjective/vague term 'seamless' without clear measurable criteria.",
+              "id": "RSK-004",
+              "reqId": "REQ-007",
+              "requirement": "The patient dashboard should display health metrics in a seamless and modern layout.",
+              "severity": "Moderate",
+              "suggestion": "Replace 'seamless' with a quantifiable metric or concrete acceptance test.",
+              "term": "seamless",
+              "type": "Ambiguity",
+              "whyItMatters": "Vague integration claim. Define zero-downtime, SSO, or automated sync constraints."
+            }
+          ]
+        },
+        {
+          "acceptanceCriteria": [
+            {
+              "given": "the system is online and backups has valid permissions",
+              "scenario": "Happy Path Execution",
+              "then": "the system processes the request successfully within standard response thresholds and confirms state update",
+              "when": "backups triggers execute with valid input parameters"
+            },
+            {
+              "given": "the system is accepting requests from backups",
+              "scenario": "Input Validation & Error Handling",
+              "then": "the system rejects the operation, returns a descriptive error message, and logs an audit event without data leakage",
+              "when": "invalid, malformed, or unauthorized data is submitted"
+            }
+          ],
+          "actors": [
+            "backups"
+          ],
+          "businessImpact": "High: Essential for core system operation, legal/compliance mandates, or system security.",
+          "category": "General",
+          "classification": "Functional",
+          "dependencies": [
+            "center"
+          ],
+          "id": "REQ-008",
+          "priority": "High",
+          "reason": "Mandatory constraint specified using binding modal keywords (must/shall/critical).",
+          "requirement": "System backups must be executed every 6 hours and replicated to a geographically distinct secondary data center.",
+          "risks": [
+            {
+              "description": "Sentence is constructed in passive voice without a clearly identified triggering actor.",
+              "id": "RSK-005",
+              "reqId": "REQ-008",
+              "requirement": "System backups must be executed every 6 hours and replicated to a geographically distinct secondary data center.",
+              "severity": "Moderate",
+              "suggestion": "Restructure in active voice: 'The [Actor/System] shall execute ...'",
+              "term": "passive voice",
+              "type": "Missing Actor (Passive Voice)",
+              "whyItMatters": "Obscures responsibility. Developers and QA cannot definitively tell which system service or user role initiates this action."
+            }
+          ]
+        }
+      ],
+      "risks": [
+        {
+          "description": "This security requirement lacks quantifiable targets (e.g., latency, cipher standard, timeout limit).",
+          "id": "RSK-001",
+          "reqId": "REQ-001",
+          "requirement": "Patients must log in using two-factor authentication before viewing electronic health records.",
+          "severity": "High",
+          "suggestion": "Include specific numerical thresholds, standard specifications (e.g. AES-256, TLS 1.3), or target response latencies.",
+          "term": "no metrics",
+          "type": "Missing Quantitative Threshold",
+          "whyItMatters": "Cannot be automated in CI/CD performance testing or verified against compliance audits."
+        },
+        {
+          "description": "This security requirement lacks quantifiable targets (e.g., latency, cipher standard, timeout limit).",
+          "id": "RSK-002",
+          "reqId": "REQ-002",
+          "requirement": "The system must comply strictly with HIPAA privacy regulations for all stored patient diagnosis notes.",
+          "severity": "High",
+          "suggestion": "Include specific numerical thresholds, standard specifications (e.g. AES-256, TLS 1.3), or target response latencies.",
+          "term": "no metrics",
+          "type": "Missing Quantitative Threshold",
+          "whyItMatters": "Cannot be automated in CI/CD performance testing or verified against compliance audits."
+        },
+        {
+          "description": "Sentence is constructed in passive voice without a clearly identified triggering actor.",
+          "id": "RSK-003",
+          "reqId": "REQ-004",
+          "requirement": "Laboratory test results must be securely encrypted both in transit (TLS 1.3) and at rest.",
+          "severity": "Moderate",
+          "suggestion": "Restructure in active voice: 'The [Actor/System] shall encrypt ...'",
+          "term": "passive voice",
+          "type": "Missing Actor (Passive Voice)",
+          "whyItMatters": "Obscures responsibility. Developers and QA cannot definitively tell which system service or user role initiates this action."
+        },
+        {
+          "description": "Contains subjective/vague term 'seamless' without clear measurable criteria.",
+          "id": "RSK-004",
+          "reqId": "REQ-007",
+          "requirement": "The patient dashboard should display health metrics in a seamless and modern layout.",
+          "severity": "Moderate",
+          "suggestion": "Replace 'seamless' with a quantifiable metric or concrete acceptance test.",
+          "term": "seamless",
+          "type": "Ambiguity",
+          "whyItMatters": "Vague integration claim. Define zero-downtime, SSO, or automated sync constraints."
+        },
+        {
+          "description": "Sentence is constructed in passive voice without a clearly identified triggering actor.",
+          "id": "RSK-005",
+          "reqId": "REQ-008",
+          "requirement": "System backups must be executed every 6 hours and replicated to a geographically distinct secondary data center.",
+          "severity": "Moderate",
+          "suggestion": "Restructure in active voice: 'The [Actor/System] shall execute ...'",
+          "term": "passive voice",
+          "type": "Missing Actor (Passive Voice)",
+          "whyItMatters": "Obscures responsibility. Developers and QA cannot definitively tell which system service or user role initiates this action."
+        }
+      ],
+      "success": true,
+      "summary": {
+        "clarityExplanation": "Calculated based on sentence specificity, active actor attribution, verifiable metrics, and absence of subjective/ambiguous vocabulary.",
+        "clarityScore": 92,
+        "high": 5,
+        "low": 1,
+        "medium": 2,
+        "riskCount": 5,
+        "total": 8
+      }
+    },
+    "summary": {
+      "clarityExplanation": "Calculated based on sentence specificity, active actor attribution, verifiable metrics, and absence of subjective/ambiguous vocabulary.",
+      "clarityScore": 92,
+      "high": 5,
+      "low": 1,
+      "medium": 2,
+      "riskCount": 5,
+      "total": 8
+    },
+    "createdAt": "2026-10-12T06:43:03.632Z",
+    "updatedAt": "2026-10-12T06:43:03.632Z"
+  },
+  {
+    "id": "req_f716a2e0-2",
+    "title": "E-Commerce Production PRD",
+    "text": "1. The user must be able to add products to the shopping cart and update quantities.\n2. The checkout service must encrypt all credit card numbers using PCI-DSS compliant AES-256 before saving to the database.\n3. The checkout page should load within 800 milliseconds under a concurrent load of 5,000 active shoppers.\n4. The system should send an email notification with receipt details within 30 seconds after payment confirmation.\n5. The administrator can export monthly sales reports in CSV format.\n6. The user interface must be user-friendly and intuitive across mobile and desktop viewports.\n7. Orders should be automatically cancelled if payment confirmation is not received within 15 minutes.\n8. The application may offer social login via Google and Apple OAuth in future releases.\n9. All product search queries must return results fast with real-time autocomplete suggestions.",
+    "analysis": {
+      "classificationBreakdown": {
+        "business": 0,
+        "functional": 5,
+        "nonFunctional": 4,
+        "technical": 0
+      },
+      "data": [
+        {
+          "acceptanceCriteria": [
+            {
+              "given": "the system is online and user has valid permissions",
+              "scenario": "Happy Path Execution",
+              "then": "the system processes the request successfully within standard response thresholds and confirms state update",
+              "when": "user triggers add with valid input parameters"
+            },
+            {
+              "given": "the system is accepting requests from user",
+              "scenario": "Input Validation & Error Handling",
+              "then": "the system rejects the operation, returns a descriptive error message, and logs an audit event without data leakage",
+              "when": "invalid, malformed, or unauthorized data is submitted"
+            }
+          ],
+          "actors": [
+            "user"
+          ],
+          "businessImpact": "High: Essential for core system operation, legal/compliance mandates, or system security.",
+          "category": "General",
+          "classification": "Functional",
+          "dependencies": [
+            "products",
+            "cart"
+          ],
+          "id": "REQ-001",
+          "priority": "High",
+          "reason": "Mandatory constraint specified using binding modal keywords (must/shall/critical).",
+          "requirement": "The user must be able to add products to the shopping cart and update quantities.",
+          "risks": []
+        },
+        {
+          "acceptanceCriteria": [
+            {
+              "given": "the system is online and service has valid permissions",
+              "scenario": "Happy Path Execution",
+              "then": "the system processes the request successfully within standard response thresholds and confirms state update",
+              "when": "service triggers encrypt with valid input parameters"
+            },
+            {
+              "given": "the system is accepting requests from service",
+              "scenario": "Input Validation & Error Handling",
+              "then": "the system rejects the operation, returns a descriptive error message, and logs an audit event without data leakage",
+              "when": "invalid, malformed, or unauthorized data is submitted"
+            }
+          ],
+          "actors": [
+            "service",
+            "AES-256"
+          ],
+          "businessImpact": "High: Essential for core system operation, legal/compliance mandates, or system security.",
+          "category": "Security",
+          "classification": "Non-Functional",
+          "dependencies": [
+            "numbers",
+            "AES-256",
+            "database"
+          ],
+          "id": "REQ-002",
+          "priority": "High",
+          "reason": "Mandatory constraint specified using binding modal keywords (must/shall/critical).",
+          "requirement": "The checkout service must encrypt all credit card numbers using PCI-DSS compliant AES-256 before saving to the database.",
+          "risks": []
+        },
+        {
+          "acceptanceCriteria": [
+            {
+              "given": "the system is online and page has valid permissions",
+              "scenario": "Happy Path Execution",
+              "then": "the system processes the request successfully within standard response thresholds and confirms state update",
+              "when": "page triggers load with valid input parameters"
+            },
+            {
+              "given": "the system is accepting requests from page",
+              "scenario": "Input Validation & Error Handling",
+              "then": "the system rejects the operation, returns a descriptive error message, and logs an audit event without data leakage",
+              "when": "invalid, malformed, or unauthorized data is submitted"
+            }
+          ],
+          "actors": [
+            "page"
+          ],
+          "businessImpact": "Medium: Directly impacts user satisfaction, processing speed, or workflow efficiency.",
+          "category": "Performance",
+          "classification": "Non-Functional",
+          "dependencies": [
+            "milliseconds",
+            "load",
+            "shoppers"
+          ],
+          "id": "REQ-003",
+          "priority": "Medium",
+          "reason": "Important operational or user experience capability (should/recommended) but not an absolute blocker for initial release.",
+          "requirement": "The checkout page should load within 800 milliseconds under a concurrent load of 5,000 active shoppers.",
+          "risks": []
+        },
+        {
+          "acceptanceCriteria": [
+            {
+              "given": "the system is online and system has valid permissions",
+              "scenario": "Happy Path Execution",
+              "then": "the system processes the request successfully within standard response thresholds and confirms state update",
+              "when": "system triggers send with valid input parameters"
+            },
+            {
+              "given": "the system is accepting requests from system",
+              "scenario": "Input Validation & Error Handling",
+              "then": "the system rejects the operation, returns a descriptive error message, and logs an audit event without data leakage",
+              "when": "invalid, malformed, or unauthorized data is submitted"
+            }
+          ],
+          "actors": [
+            "system"
+          ],
+          "businessImpact": "Medium: Directly impacts user satisfaction, processing speed, or workflow efficiency.",
+          "category": "Functional Core",
+          "classification": "Functional",
+          "dependencies": [
+            "notification",
+            "details",
+            "seconds",
+            "confirmation"
+          ],
+          "id": "REQ-004",
+          "priority": "Medium",
+          "reason": "Important operational or user experience capability (should/recommended) but not an absolute blocker for initial release.",
+          "requirement": "The system should send an email notification with receipt details within 30 seconds after payment confirmation.",
+          "risks": []
+        },
+        {
+          "acceptanceCriteria": [
+            {
+              "given": "the system is online and administrator has valid permissions",
+              "scenario": "Happy Path Execution",
+              "then": "the system processes the request successfully within standard response thresholds and confirms state update",
+              "when": "administrator triggers export with valid input parameters"
+            },
+            {
+              "given": "the system is accepting requests from administrator",
+              "scenario": "Input Validation & Error Handling",
+              "then": "the system rejects the operation, returns a descriptive error message, and logs an audit event without data leakage",
+              "when": "invalid, malformed, or unauthorized data is submitted"
+            }
+          ],
+          "actors": [
+            "administrator",
+            "CSV"
+          ],
+          "businessImpact": "Low: Cosmetic, supplementary convenience, or future-phase backlog item.",
+          "category": "Functional Core",
+          "classification": "Functional",
+          "dependencies": [
+            "reports",
+            "format"
+          ],
+          "id": "REQ-005",
+          "priority": "Low",
+          "reason": "Discretionary or optional capability (may/can/optional) suitable for post-launch enhancement.",
+          "requirement": "The administrator can export monthly sales reports in CSV format.",
+          "risks": []
+        },
+        {
+          "acceptanceCriteria": [
+            {
+              "given": "the system is online and interface has valid permissions",
+              "scenario": "Happy Path Execution",
+              "then": "the system processes the request successfully within standard response thresholds and confirms state update",
+              "when": "interface triggers perform the requested action with valid input parameters"
+            },
+            {
+              "given": "the system is accepting requests from interface",
+              "scenario": "Input Validation & Error Handling",
+              "then": "the system rejects the operation, returns a descriptive error message, and logs an audit event without data leakage",
+              "when": "invalid, malformed, or unauthorized data is submitted"
+            }
+          ],
+          "actors": [
+            "interface"
+          ],
+          "businessImpact": "High: Essential for core system operation, legal/compliance mandates, or system security.",
+          "category": "Usability",
+          "classification": "Non-Functional",
+          "dependencies": [
+            "viewports"
+          ],
+          "id": "REQ-006",
+          "priority": "High",
+          "reason": "Mandatory constraint specified using binding modal keywords (must/shall/critical).",
+          "requirement": "The user interface must be user-friendly and intuitive across mobile and desktop viewports.",
+          "risks": [
+            {
+              "description": "Contains subjective/vague term 'user-friendly' without clear measurable criteria.",
+              "id": "RSK-001",
+              "reqId": "REQ-006",
+              "requirement": "The user interface must be user-friendly and intuitive across mobile and desktop viewports.",
+              "severity": "Moderate",
+              "suggestion": "Replace 'user-friendly' with a quantifiable metric or concrete acceptance test.",
+              "term": "user-friendly",
+              "type": "Ambiguity",
+              "whyItMatters": "Subjective UX claim. Define specific usability criteria (e.g., 'task completion within 3 clicks', SUS score > 80)."
+            },
+            {
+              "description": "Contains subjective/vague term 'intuitive' without clear measurable criteria.",
+              "id": "RSK-002",
+              "reqId": "REQ-006",
+              "requirement": "The user interface must be user-friendly and intuitive across mobile and desktop viewports.",
+              "severity": "Moderate",
+              "suggestion": "Replace 'intuitive' with a quantifiable metric or concrete acceptance test.",
+              "term": "intuitive",
+              "type": "Ambiguity",
+              "whyItMatters": "Untestable usability claim. Specify onboarding completion rate or design system standard."
+            }
+          ]
+        },
+        {
+          "acceptanceCriteria": [
+            {
+              "given": "the system is online and Orders has valid permissions",
+              "scenario": "Happy Path Execution",
+              "then": "the system processes the request successfully within standard response thresholds and confirms state update",
+              "when": "Orders triggers cancel with valid input parameters"
+            },
+            {
+              "given": "the system is accepting requests from Orders",
+              "scenario": "Input Validation & Error Handling",
+              "then": "the system rejects the operation, returns a descriptive error message, and logs an audit event without data leakage",
+              "when": "invalid, malformed, or unauthorized data is submitted"
+            }
+          ],
+          "actors": [
+            "Orders",
+            "confirmation"
+          ],
+          "businessImpact": "Medium: Directly impacts user satisfaction, processing speed, or workflow efficiency.",
+          "category": "Functional Core",
+          "classification": "Functional",
+          "dependencies": [
+            "minutes"
+          ],
+          "id": "REQ-007",
+          "priority": "Medium",
+          "reason": "Important operational or user experience capability (should/recommended) but not an absolute blocker for initial release.",
+          "requirement": "Orders should be automatically cancelled if payment confirmation is not received within 15 minutes.",
+          "risks": [
+            {
+              "description": "Sentence is constructed in passive voice without a clearly identified triggering actor.",
+              "id": "RSK-003",
+              "reqId": "REQ-007",
+              "requirement": "Orders should be automatically cancelled if payment confirmation is not received within 15 minutes.",
+              "severity": "Moderate",
+              "suggestion": "Restructure in active voice: 'The [Actor/System] shall cancel ...'",
+              "term": "passive voice",
+              "type": "Missing Actor (Passive Voice)",
+              "whyItMatters": "Obscures responsibility. Developers and QA cannot definitively tell which system service or user role initiates this action."
+            }
+          ]
+        },
+        {
+          "acceptanceCriteria": [
+            {
+              "given": "the system is online and application has valid permissions",
+              "scenario": "Happy Path Execution",
+              "then": "the system processes the request successfully within standard response thresholds and confirms state update",
+              "when": "application triggers offer with valid input parameters"
+            },
+            {
+              "given": "the system is accepting requests from application",
+              "scenario": "Input Validation & Error Handling",
+              "then": "the system rejects the operation, returns a descriptive error message, and logs an audit event without data leakage",
+              "when": "invalid, malformed, or unauthorized data is submitted"
+            }
+          ],
+          "actors": [
+            "application",
+            "Google",
+            "Apple"
+          ],
+          "businessImpact": "Low: Cosmetic, supplementary convenience, or future-phase backlog item.",
+          "category": "Security",
+          "classification": "Non-Functional",
+          "dependencies": [
+            "login",
+            "Google",
+            "releases"
+          ],
+          "id": "REQ-008",
+          "priority": "Low",
+          "reason": "Discretionary or optional capability (may/can/optional) suitable for post-launch enhancement.",
+          "requirement": "The application may offer social login via Google and Apple OAuth in future releases.",
+          "risks": [
+            {
+              "description": "This security requirement lacks quantifiable targets (e.g., latency, cipher standard, timeout limit).",
+              "id": "RSK-004",
+              "reqId": "REQ-008",
+              "requirement": "The application may offer social login via Google and Apple OAuth in future releases.",
+              "severity": "High",
+              "suggestion": "Include specific numerical thresholds, standard specifications (e.g. AES-256, TLS 1.3), or target response latencies.",
+              "term": "no metrics",
+              "type": "Missing Quantitative Threshold",
+              "whyItMatters": "Cannot be automated in CI/CD performance testing or verified against compliance audits."
+            }
+          ]
+        },
+        {
+          "acceptanceCriteria": [
+            {
+              "given": "the system is online and queries has valid permissions",
+              "scenario": "Happy Path Execution",
+              "then": "the system processes the request successfully within standard response thresholds and confirms state update",
+              "when": "queries triggers return with valid input parameters"
+            },
+            {
+              "given": "the system is accepting requests from queries",
+              "scenario": "Input Validation & Error Handling",
+              "then": "the system rejects the operation, returns a descriptive error message, and logs an audit event without data leakage",
+              "when": "invalid, malformed, or unauthorized data is submitted"
+            }
+          ],
+          "actors": [
+            "queries"
+          ],
+          "businessImpact": "High: Essential for core system operation, legal/compliance mandates, or system security.",
+          "category": "Functional Core",
+          "classification": "Functional",
+          "dependencies": [
+            "results",
+            "suggestions"
+          ],
+          "id": "REQ-009",
+          "priority": "High",
+          "reason": "Mandatory constraint specified using binding modal keywords (must/shall/critical).",
+          "requirement": "All product search queries must return results fast with real-time autocomplete suggestions.",
+          "risks": [
+            {
+              "description": "Contains subjective/vague term 'fast' without clear measurable criteria.",
+              "id": "RSK-005",
+              "reqId": "REQ-009",
+              "requirement": "All product search queries must return results fast with real-time autocomplete suggestions.",
+              "severity": "Moderate",
+              "suggestion": "Replace 'fast' with a quantifiable metric or concrete acceptance test.",
+              "term": "fast",
+              "type": "Ambiguity",
+              "whyItMatters": "Subjective speed claim. Specify maximum response latency (e.g., '< 500ms under 1000 concurrent users')."
+            },
+            {
+              "description": "Contains subjective/vague term 'real-time' without clear measurable criteria.",
+              "id": "RSK-006",
+              "reqId": "REQ-009",
+              "requirement": "All product search queries must return results fast with real-time autocomplete suggestions.",
+              "severity": "Moderate",
+              "suggestion": "Replace 'real-time' with a quantifiable metric or concrete acceptance test.",
+              "term": "real-time",
+              "type": "Ambiguity",
+              "whyItMatters": "Vague timing claim. State whether this implies WebSocket push, polling interval, or sub-second event delivery (< 250ms)."
+            }
+          ]
+        }
+      ],
+      "recommendations": [
+        {
+          "description": "Replace subjective adjectives like 'fast' and 'user-friendly' with concrete, measurable KPIs and SLA benchmarks.",
+          "priority": "High",
+          "title": "Quantify 4 Ambiguous Term(s)"
+        },
+        {
+          "description": "Convert passive voice statements into explicit subject-verb requirements specifying exact user roles or system microservices.",
+          "priority": "Medium",
+          "title": "Assign Explicit Actors to 1 Requirement(s)"
+        },
+        {
+          "description": "Review the auto-generated Given-When-Then scenarios with QA and product stakeholders to prepare automated test cases.",
+          "priority": "Low",
+          "title": "Formalize Acceptance Criteria in BDD Format"
+        }
+      ],
+      "requirements": [
+        {
+          "acceptanceCriteria": [
+            {
+              "given": "the system is online and user has valid permissions",
+              "scenario": "Happy Path Execution",
+              "then": "the system processes the request successfully within standard response thresholds and confirms state update",
+              "when": "user triggers add with valid input parameters"
+            },
+            {
+              "given": "the system is accepting requests from user",
+              "scenario": "Input Validation & Error Handling",
+              "then": "the system rejects the operation, returns a descriptive error message, and logs an audit event without data leakage",
+              "when": "invalid, malformed, or unauthorized data is submitted"
+            }
+          ],
+          "actors": [
+            "user"
+          ],
+          "businessImpact": "High: Essential for core system operation, legal/compliance mandates, or system security.",
+          "category": "General",
+          "classification": "Functional",
+          "dependencies": [
+            "products",
+            "cart"
+          ],
+          "id": "REQ-001",
+          "priority": "High",
+          "reason": "Mandatory constraint specified using binding modal keywords (must/shall/critical).",
+          "requirement": "The user must be able to add products to the shopping cart and update quantities.",
+          "risks": []
+        },
+        {
+          "acceptanceCriteria": [
+            {
+              "given": "the system is online and service has valid permissions",
+              "scenario": "Happy Path Execution",
+              "then": "the system processes the request successfully within standard response thresholds and confirms state update",
+              "when": "service triggers encrypt with valid input parameters"
+            },
+            {
+              "given": "the system is accepting requests from service",
+              "scenario": "Input Validation & Error Handling",
+              "then": "the system rejects the operation, returns a descriptive error message, and logs an audit event without data leakage",
+              "when": "invalid, malformed, or unauthorized data is submitted"
+            }
+          ],
+          "actors": [
+            "service",
+            "AES-256"
+          ],
+          "businessImpact": "High: Essential for core system operation, legal/compliance mandates, or system security.",
+          "category": "Security",
+          "classification": "Non-Functional",
+          "dependencies": [
+            "numbers",
+            "AES-256",
+            "database"
+          ],
+          "id": "REQ-002",
+          "priority": "High",
+          "reason": "Mandatory constraint specified using binding modal keywords (must/shall/critical).",
+          "requirement": "The checkout service must encrypt all credit card numbers using PCI-DSS compliant AES-256 before saving to the database.",
+          "risks": []
+        },
+        {
+          "acceptanceCriteria": [
+            {
+              "given": "the system is online and page has valid permissions",
+              "scenario": "Happy Path Execution",
+              "then": "the system processes the request successfully within standard response thresholds and confirms state update",
+              "when": "page triggers load with valid input parameters"
+            },
+            {
+              "given": "the system is accepting requests from page",
+              "scenario": "Input Validation & Error Handling",
+              "then": "the system rejects the operation, returns a descriptive error message, and logs an audit event without data leakage",
+              "when": "invalid, malformed, or unauthorized data is submitted"
+            }
+          ],
+          "actors": [
+            "page"
+          ],
+          "businessImpact": "Medium: Directly impacts user satisfaction, processing speed, or workflow efficiency.",
+          "category": "Performance",
+          "classification": "Non-Functional",
+          "dependencies": [
+            "milliseconds",
+            "load",
+            "shoppers"
+          ],
+          "id": "REQ-003",
+          "priority": "Medium",
+          "reason": "Important operational or user experience capability (should/recommended) but not an absolute blocker for initial release.",
+          "requirement": "The checkout page should load within 800 milliseconds under a concurrent load of 5,000 active shoppers.",
+          "risks": []
+        },
+        {
+          "acceptanceCriteria": [
+            {
+              "given": "the system is online and system has valid permissions",
+              "scenario": "Happy Path Execution",
+              "then": "the system processes the request successfully within standard response thresholds and confirms state update",
+              "when": "system triggers send with valid input parameters"
+            },
+            {
+              "given": "the system is accepting requests from system",
+              "scenario": "Input Validation & Error Handling",
+              "then": "the system rejects the operation, returns a descriptive error message, and logs an audit event without data leakage",
+              "when": "invalid, malformed, or unauthorized data is submitted"
+            }
+          ],
+          "actors": [
+            "system"
+          ],
+          "businessImpact": "Medium: Directly impacts user satisfaction, processing speed, or workflow efficiency.",
+          "category": "Functional Core",
+          "classification": "Functional",
+          "dependencies": [
+            "notification",
+            "details",
+            "seconds",
+            "confirmation"
+          ],
+          "id": "REQ-004",
+          "priority": "Medium",
+          "reason": "Important operational or user experience capability (should/recommended) but not an absolute blocker for initial release.",
+          "requirement": "The system should send an email notification with receipt details within 30 seconds after payment confirmation.",
+          "risks": []
+        },
+        {
+          "acceptanceCriteria": [
+            {
+              "given": "the system is online and administrator has valid permissions",
+              "scenario": "Happy Path Execution",
+              "then": "the system processes the request successfully within standard response thresholds and confirms state update",
+              "when": "administrator triggers export with valid input parameters"
+            },
+            {
+              "given": "the system is accepting requests from administrator",
+              "scenario": "Input Validation & Error Handling",
+              "then": "the system rejects the operation, returns a descriptive error message, and logs an audit event without data leakage",
+              "when": "invalid, malformed, or unauthorized data is submitted"
+            }
+          ],
+          "actors": [
+            "administrator",
+            "CSV"
+          ],
+          "businessImpact": "Low: Cosmetic, supplementary convenience, or future-phase backlog item.",
+          "category": "Functional Core",
+          "classification": "Functional",
+          "dependencies": [
+            "reports",
+            "format"
+          ],
+          "id": "REQ-005",
+          "priority": "Low",
+          "reason": "Discretionary or optional capability (may/can/optional) suitable for post-launch enhancement.",
+          "requirement": "The administrator can export monthly sales reports in CSV format.",
+          "risks": []
+        },
+        {
+          "acceptanceCriteria": [
+            {
+              "given": "the system is online and interface has valid permissions",
+              "scenario": "Happy Path Execution",
+              "then": "the system processes the request successfully within standard response thresholds and confirms state update",
+              "when": "interface triggers perform the requested action with valid input parameters"
+            },
+            {
+              "given": "the system is accepting requests from interface",
+              "scenario": "Input Validation & Error Handling",
+              "then": "the system rejects the operation, returns a descriptive error message, and logs an audit event without data leakage",
+              "when": "invalid, malformed, or unauthorized data is submitted"
+            }
+          ],
+          "actors": [
+            "interface"
+          ],
+          "businessImpact": "High: Essential for core system operation, legal/compliance mandates, or system security.",
+          "category": "Usability",
+          "classification": "Non-Functional",
+          "dependencies": [
+            "viewports"
+          ],
+          "id": "REQ-006",
+          "priority": "High",
+          "reason": "Mandatory constraint specified using binding modal keywords (must/shall/critical).",
+          "requirement": "The user interface must be user-friendly and intuitive across mobile and desktop viewports.",
+          "risks": [
+            {
+              "description": "Contains subjective/vague term 'user-friendly' without clear measurable criteria.",
+              "id": "RSK-001",
+              "reqId": "REQ-006",
+              "requirement": "The user interface must be user-friendly and intuitive across mobile and desktop viewports.",
+              "severity": "Moderate",
+              "suggestion": "Replace 'user-friendly' with a quantifiable metric or concrete acceptance test.",
+              "term": "user-friendly",
+              "type": "Ambiguity",
+              "whyItMatters": "Subjective UX claim. Define specific usability criteria (e.g., 'task completion within 3 clicks', SUS score > 80)."
+            },
+            {
+              "description": "Contains subjective/vague term 'intuitive' without clear measurable criteria.",
+              "id": "RSK-002",
+              "reqId": "REQ-006",
+              "requirement": "The user interface must be user-friendly and intuitive across mobile and desktop viewports.",
+              "severity": "Moderate",
+              "suggestion": "Replace 'intuitive' with a quantifiable metric or concrete acceptance test.",
+              "term": "intuitive",
+              "type": "Ambiguity",
+              "whyItMatters": "Untestable usability claim. Specify onboarding completion rate or design system standard."
+            }
+          ]
+        },
+        {
+          "acceptanceCriteria": [
+            {
+              "given": "the system is online and Orders has valid permissions",
+              "scenario": "Happy Path Execution",
+              "then": "the system processes the request successfully within standard response thresholds and confirms state update",
+              "when": "Orders triggers cancel with valid input parameters"
+            },
+            {
+              "given": "the system is accepting requests from Orders",
+              "scenario": "Input Validation & Error Handling",
+              "then": "the system rejects the operation, returns a descriptive error message, and logs an audit event without data leakage",
+              "when": "invalid, malformed, or unauthorized data is submitted"
+            }
+          ],
+          "actors": [
+            "Orders",
+            "confirmation"
+          ],
+          "businessImpact": "Medium: Directly impacts user satisfaction, processing speed, or workflow efficiency.",
+          "category": "Functional Core",
+          "classification": "Functional",
+          "dependencies": [
+            "minutes"
+          ],
+          "id": "REQ-007",
+          "priority": "Medium",
+          "reason": "Important operational or user experience capability (should/recommended) but not an absolute blocker for initial release.",
+          "requirement": "Orders should be automatically cancelled if payment confirmation is not received within 15 minutes.",
+          "risks": [
+            {
+              "description": "Sentence is constructed in passive voice without a clearly identified triggering actor.",
+              "id": "RSK-003",
+              "reqId": "REQ-007",
+              "requirement": "Orders should be automatically cancelled if payment confirmation is not received within 15 minutes.",
+              "severity": "Moderate",
+              "suggestion": "Restructure in active voice: 'The [Actor/System] shall cancel ...'",
+              "term": "passive voice",
+              "type": "Missing Actor (Passive Voice)",
+              "whyItMatters": "Obscures responsibility. Developers and QA cannot definitively tell which system service or user role initiates this action."
+            }
+          ]
+        },
+        {
+          "acceptanceCriteria": [
+            {
+              "given": "the system is online and application has valid permissions",
+              "scenario": "Happy Path Execution",
+              "then": "the system processes the request successfully within standard response thresholds and confirms state update",
+              "when": "application triggers offer with valid input parameters"
+            },
+            {
+              "given": "the system is accepting requests from application",
+              "scenario": "Input Validation & Error Handling",
+              "then": "the system rejects the operation, returns a descriptive error message, and logs an audit event without data leakage",
+              "when": "invalid, malformed, or unauthorized data is submitted"
+            }
+          ],
+          "actors": [
+            "application",
+            "Google",
+            "Apple"
+          ],
+          "businessImpact": "Low: Cosmetic, supplementary convenience, or future-phase backlog item.",
+          "category": "Security",
+          "classification": "Non-Functional",
+          "dependencies": [
+            "login",
+            "Google",
+            "releases"
+          ],
+          "id": "REQ-008",
+          "priority": "Low",
+          "reason": "Discretionary or optional capability (may/can/optional) suitable for post-launch enhancement.",
+          "requirement": "The application may offer social login via Google and Apple OAuth in future releases.",
+          "risks": [
+            {
+              "description": "This security requirement lacks quantifiable targets (e.g., latency, cipher standard, timeout limit).",
+              "id": "RSK-004",
+              "reqId": "REQ-008",
+              "requirement": "The application may offer social login via Google and Apple OAuth in future releases.",
+              "severity": "High",
+              "suggestion": "Include specific numerical thresholds, standard specifications (e.g. AES-256, TLS 1.3), or target response latencies.",
+              "term": "no metrics",
+              "type": "Missing Quantitative Threshold",
+              "whyItMatters": "Cannot be automated in CI/CD performance testing or verified against compliance audits."
+            }
+          ]
+        },
+        {
+          "acceptanceCriteria": [
+            {
+              "given": "the system is online and queries has valid permissions",
+              "scenario": "Happy Path Execution",
+              "then": "the system processes the request successfully within standard response thresholds and confirms state update",
+              "when": "queries triggers return with valid input parameters"
+            },
+            {
+              "given": "the system is accepting requests from queries",
+              "scenario": "Input Validation & Error Handling",
+              "then": "the system rejects the operation, returns a descriptive error message, and logs an audit event without data leakage",
+              "when": "invalid, malformed, or unauthorized data is submitted"
+            }
+          ],
+          "actors": [
+            "queries"
+          ],
+          "businessImpact": "High: Essential for core system operation, legal/compliance mandates, or system security.",
+          "category": "Functional Core",
+          "classification": "Functional",
+          "dependencies": [
+            "results",
+            "suggestions"
+          ],
+          "id": "REQ-009",
+          "priority": "High",
+          "reason": "Mandatory constraint specified using binding modal keywords (must/shall/critical).",
+          "requirement": "All product search queries must return results fast with real-time autocomplete suggestions.",
+          "risks": [
+            {
+              "description": "Contains subjective/vague term 'fast' without clear measurable criteria.",
+              "id": "RSK-005",
+              "reqId": "REQ-009",
+              "requirement": "All product search queries must return results fast with real-time autocomplete suggestions.",
+              "severity": "Moderate",
+              "suggestion": "Replace 'fast' with a quantifiable metric or concrete acceptance test.",
+              "term": "fast",
+              "type": "Ambiguity",
+              "whyItMatters": "Subjective speed claim. Specify maximum response latency (e.g., '< 500ms under 1000 concurrent users')."
+            },
+            {
+              "description": "Contains subjective/vague term 'real-time' without clear measurable criteria.",
+              "id": "RSK-006",
+              "reqId": "REQ-009",
+              "requirement": "All product search queries must return results fast with real-time autocomplete suggestions.",
+              "severity": "Moderate",
+              "suggestion": "Replace 'real-time' with a quantifiable metric or concrete acceptance test.",
+              "term": "real-time",
+              "type": "Ambiguity",
+              "whyItMatters": "Vague timing claim. State whether this implies WebSocket push, polling interval, or sub-second event delivery (< 250ms)."
+            }
+          ]
+        }
+      ],
+      "risks": [
+        {
+          "description": "Contains subjective/vague term 'user-friendly' without clear measurable criteria.",
+          "id": "RSK-001",
+          "reqId": "REQ-006",
+          "requirement": "The user interface must be user-friendly and intuitive across mobile and desktop viewports.",
+          "severity": "Moderate",
+          "suggestion": "Replace 'user-friendly' with a quantifiable metric or concrete acceptance test.",
+          "term": "user-friendly",
+          "type": "Ambiguity",
+          "whyItMatters": "Subjective UX claim. Define specific usability criteria (e.g., 'task completion within 3 clicks', SUS score > 80)."
+        },
+        {
+          "description": "Contains subjective/vague term 'intuitive' without clear measurable criteria.",
+          "id": "RSK-002",
+          "reqId": "REQ-006",
+          "requirement": "The user interface must be user-friendly and intuitive across mobile and desktop viewports.",
+          "severity": "Moderate",
+          "suggestion": "Replace 'intuitive' with a quantifiable metric or concrete acceptance test.",
+          "term": "intuitive",
+          "type": "Ambiguity",
+          "whyItMatters": "Untestable usability claim. Specify onboarding completion rate or design system standard."
+        },
+        {
+          "description": "Sentence is constructed in passive voice without a clearly identified triggering actor.",
+          "id": "RSK-003",
+          "reqId": "REQ-007",
+          "requirement": "Orders should be automatically cancelled if payment confirmation is not received within 15 minutes.",
+          "severity": "Moderate",
+          "suggestion": "Restructure in active voice: 'The [Actor/System] shall cancel ...'",
+          "term": "passive voice",
+          "type": "Missing Actor (Passive Voice)",
+          "whyItMatters": "Obscures responsibility. Developers and QA cannot definitively tell which system service or user role initiates this action."
+        },
+        {
+          "description": "This security requirement lacks quantifiable targets (e.g., latency, cipher standard, timeout limit).",
+          "id": "RSK-004",
+          "reqId": "REQ-008",
+          "requirement": "The application may offer social login via Google and Apple OAuth in future releases.",
+          "severity": "High",
+          "suggestion": "Include specific numerical thresholds, standard specifications (e.g. AES-256, TLS 1.3), or target response latencies.",
+          "term": "no metrics",
+          "type": "Missing Quantitative Threshold",
+          "whyItMatters": "Cannot be automated in CI/CD performance testing or verified against compliance audits."
+        },
+        {
+          "description": "Contains subjective/vague term 'fast' without clear measurable criteria.",
+          "id": "RSK-005",
+          "reqId": "REQ-009",
+          "requirement": "All product search queries must return results fast with real-time autocomplete suggestions.",
+          "severity": "Moderate",
+          "suggestion": "Replace 'fast' with a quantifiable metric or concrete acceptance test.",
+          "term": "fast",
+          "type": "Ambiguity",
+          "whyItMatters": "Subjective speed claim. Specify maximum response latency (e.g., '< 500ms under 1000 concurrent users')."
+        },
+        {
+          "description": "Contains subjective/vague term 'real-time' without clear measurable criteria.",
+          "id": "RSK-006",
+          "reqId": "REQ-009",
+          "requirement": "All product search queries must return results fast with real-time autocomplete suggestions.",
+          "severity": "Moderate",
+          "suggestion": "Replace 'real-time' with a quantifiable metric or concrete acceptance test.",
+          "term": "real-time",
+          "type": "Ambiguity",
+          "whyItMatters": "Vague timing claim. State whether this implies WebSocket push, polling interval, or sub-second event delivery (< 250ms)."
+        }
+      ],
+      "success": true,
+      "summary": {
+        "clarityExplanation": "Calculated based on sentence specificity, active actor attribution, verifiable metrics, and absence of subjective/ambiguous vocabulary.",
+        "clarityScore": 88,
+        "high": 4,
+        "low": 2,
+        "medium": 3,
+        "riskCount": 6,
+        "total": 9
+      }
+    },
+    "summary": {
+      "clarityExplanation": "Calculated based on sentence specificity, active actor attribution, verifiable metrics, and absence of subjective/ambiguous vocabulary.",
+      "clarityScore": 88,
+      "high": 4,
+      "low": 2,
+      "medium": 3,
+      "riskCount": 6,
+      "total": 9
+    },
+    "createdAt": "2026-10-12T06:18:36.616Z",
+    "updatedAt": "2026-10-12T06:32:06.879Z"
+  },
+  {
+    "id": "req_0273a53c-7",
+    "title": "The system must authenticate users using OAuth 2.0....",
+    "text": "The system must authenticate users using OAuth 2.0. The UI should be fast and intuitive.",
+    "analysis": {
+      "classificationBreakdown": {
+        "business": 0,
+        "functional": 0,
+        "nonFunctional": 2,
+        "technical": 0
+      },
+      "data": [
+        {
+          "acceptanceCriteria": [
+            {
+              "given": "the system is online and system has valid permissions",
+              "scenario": "Happy Path Execution",
+              "then": "the system processes the request successfully within standard response thresholds and confirms state update",
+              "when": "system triggers authenticate with valid input parameters"
+            },
+            {
+              "given": "the system is accepting requests from system",
+              "scenario": "Input Validation & Error Handling",
+              "then": "the system rejects the operation, returns a descriptive error message, and logs an audit event without data leakage",
+              "when": "invalid, malformed, or unauthorized data is submitted"
+            }
+          ],
+          "actors": [
+            "system"
+          ],
+          "businessImpact": "High: Essential for core system operation, legal/compliance mandates, or system security.",
+          "category": "Security",
+          "classification": "Non-Functional",
+          "dependencies": [
+            "users",
+            "OAuth"
+          ],
+          "id": "REQ-001",
+          "priority": "High",
+          "reason": "Mandatory constraint specified using binding modal keywords (must/shall/critical).",
+          "requirement": "The system must authenticate users using OAuth 2.0.",
+          "risks": []
+        },
+        {
+          "acceptanceCriteria": [
+            {
+              "given": "the system is online and UI has valid permissions",
+              "scenario": "Happy Path Execution",
+              "then": "the system processes the request successfully within standard response thresholds and confirms state update",
+              "when": "UI triggers perform the requested action with valid input parameters"
+            },
+            {
+              "given": "the system is accepting requests from UI",
+              "scenario": "Input Validation & Error Handling",
+              "then": "the system rejects the operation, returns a descriptive error message, and logs an audit event without data leakage",
+              "when": "invalid, malformed, or unauthorized data is submitted"
+            }
+          ],
+          "actors": [
+            "UI"
+          ],
+          "businessImpact": "Medium: Directly impacts user satisfaction, processing speed, or workflow efficiency.",
+          "category": "Usability",
+          "classification": "Non-Functional",
+          "dependencies": [
+            "Core Database"
+          ],
+          "id": "REQ-002",
+          "priority": "Medium",
+          "reason": "Important operational or user experience capability (should/recommended) but not an absolute blocker for initial release.",
+          "requirement": "The UI should be fast and intuitive.",
+          "risks": [
+            {
+              "description": "Contains subjective/vague term 'fast' without clear measurable criteria.",
+              "id": "RSK-001",
+              "reqId": "REQ-002",
+              "requirement": "The UI should be fast and intuitive.",
+              "severity": "Moderate",
+              "suggestion": "Replace 'fast' with a quantifiable metric or concrete acceptance test.",
+              "term": "fast",
+              "type": "Ambiguity",
+              "whyItMatters": "Subjective speed claim. Specify maximum response latency (e.g., '< 500ms under 1000 concurrent users')."
+            },
+            {
+              "description": "Contains subjective/vague term 'intuitive' without clear measurable criteria.",
+              "id": "RSK-002",
+              "reqId": "REQ-002",
+              "requirement": "The UI should be fast and intuitive.",
+              "severity": "Moderate",
+              "suggestion": "Replace 'intuitive' with a quantifiable metric or concrete acceptance test.",
+              "term": "intuitive",
+              "type": "Ambiguity",
+              "whyItMatters": "Untestable usability claim. Specify onboarding completion rate or design system standard."
+            }
+          ]
+        }
+      ],
+      "recommendations": [
+        {
+          "description": "Replace subjective adjectives like 'fast' and 'user-friendly' with concrete, measurable KPIs and SLA benchmarks.",
+          "priority": "High",
+          "title": "Quantify 2 Ambiguous Term(s)"
+        },
+        {
+          "description": "Specify expected concurrent user loads, API response times (e.g. p95 < 300ms), and database query latency bounds.",
+          "priority": "Medium",
+          "title": "Establish Performance and Scalability Budgets"
+        },
+        {
+          "description": "Review the auto-generated Given-When-Then scenarios with QA and product stakeholders to prepare automated test cases.",
+          "priority": "Low",
+          "title": "Formalize Acceptance Criteria in BDD Format"
+        }
+      ],
+      "requirements": [
+        {
+          "acceptanceCriteria": [
+            {
+              "given": "the system is online and system has valid permissions",
+              "scenario": "Happy Path Execution",
+              "then": "the system processes the request successfully within standard response thresholds and confirms state update",
+              "when": "system triggers authenticate with valid input parameters"
+            },
+            {
+              "given": "the system is accepting requests from system",
+              "scenario": "Input Validation & Error Handling",
+              "then": "the system rejects the operation, returns a descriptive error message, and logs an audit event without data leakage",
+              "when": "invalid, malformed, or unauthorized data is submitted"
+            }
+          ],
+          "actors": [
+            "system"
+          ],
+          "businessImpact": "High: Essential for core system operation, legal/compliance mandates, or system security.",
+          "category": "Security",
+          "classification": "Non-Functional",
+          "dependencies": [
+            "users",
+            "OAuth"
+          ],
+          "id": "REQ-001",
+          "priority": "High",
+          "reason": "Mandatory constraint specified using binding modal keywords (must/shall/critical).",
+          "requirement": "The system must authenticate users using OAuth 2.0.",
+          "risks": []
+        },
+        {
+          "acceptanceCriteria": [
+            {
+              "given": "the system is online and UI has valid permissions",
+              "scenario": "Happy Path Execution",
+              "then": "the system processes the request successfully within standard response thresholds and confirms state update",
+              "when": "UI triggers perform the requested action with valid input parameters"
+            },
+            {
+              "given": "the system is accepting requests from UI",
+              "scenario": "Input Validation & Error Handling",
+              "then": "the system rejects the operation, returns a descriptive error message, and logs an audit event without data leakage",
+              "when": "invalid, malformed, or unauthorized data is submitted"
+            }
+          ],
+          "actors": [
+            "UI"
+          ],
+          "businessImpact": "Medium: Directly impacts user satisfaction, processing speed, or workflow efficiency.",
+          "category": "Usability",
+          "classification": "Non-Functional",
+          "dependencies": [
+            "Core Database"
+          ],
+          "id": "REQ-002",
+          "priority": "Medium",
+          "reason": "Important operational or user experience capability (should/recommended) but not an absolute blocker for initial release.",
+          "requirement": "The UI should be fast and intuitive.",
+          "risks": [
+            {
+              "description": "Contains subjective/vague term 'fast' without clear measurable criteria.",
+              "id": "RSK-001",
+              "reqId": "REQ-002",
+              "requirement": "The UI should be fast and intuitive.",
+              "severity": "Moderate",
+              "suggestion": "Replace 'fast' with a quantifiable metric or concrete acceptance test.",
+              "term": "fast",
+              "type": "Ambiguity",
+              "whyItMatters": "Subjective speed claim. Specify maximum response latency (e.g., '< 500ms under 1000 concurrent users')."
+            },
+            {
+              "description": "Contains subjective/vague term 'intuitive' without clear measurable criteria.",
+              "id": "RSK-002",
+              "reqId": "REQ-002",
+              "requirement": "The UI should be fast and intuitive.",
+              "severity": "Moderate",
+              "suggestion": "Replace 'intuitive' with a quantifiable metric or concrete acceptance test.",
+              "term": "intuitive",
+              "type": "Ambiguity",
+              "whyItMatters": "Untestable usability claim. Specify onboarding completion rate or design system standard."
+            }
+          ]
+        }
+      ],
+      "risks": [
+        {
+          "description": "Contains subjective/vague term 'fast' without clear measurable criteria.",
+          "id": "RSK-001",
+          "reqId": "REQ-002",
+          "requirement": "The UI should be fast and intuitive.",
+          "severity": "Moderate",
+          "suggestion": "Replace 'fast' with a quantifiable metric or concrete acceptance test.",
+          "term": "fast",
+          "type": "Ambiguity",
+          "whyItMatters": "Subjective speed claim. Specify maximum response latency (e.g., '< 500ms under 1000 concurrent users')."
+        },
+        {
+          "description": "Contains subjective/vague term 'intuitive' without clear measurable criteria.",
+          "id": "RSK-002",
+          "reqId": "REQ-002",
+          "requirement": "The UI should be fast and intuitive.",
+          "severity": "Moderate",
+          "suggestion": "Replace 'intuitive' with a quantifiable metric or concrete acceptance test.",
+          "term": "intuitive",
+          "type": "Ambiguity",
+          "whyItMatters": "Untestable usability claim. Specify onboarding completion rate or design system standard."
+        }
+      ],
+      "success": true,
+      "summary": {
+        "clarityExplanation": "Calculated based on sentence specificity, active actor attribution, verifiable metrics, and absence of subjective/ambiguous vocabulary.",
+        "clarityScore": 88,
+        "high": 1,
+        "low": 0,
+        "medium": 1,
+        "riskCount": 2,
+        "total": 2
+      }
+    },
+    "summary": {
+      "clarityExplanation": "Calculated based on sentence specificity, active actor attribution, verifiable metrics, and absence of subjective/ambiguous vocabulary.",
+      "clarityScore": 88,
+      "high": 1,
+      "low": 0,
+      "medium": 1,
+      "riskCount": 2,
+      "total": 2
+    },
+    "createdAt": "2026-10-12T06:06:30.581Z",
+    "updatedAt": "2026-10-12T06:06:30.582Z"
+  }
+]
